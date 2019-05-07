@@ -1,4 +1,4 @@
-# 模拟 S/Key 动态口令验证
+# 模拟 S/Key 动态口令验证(系统安全实验)
 基于jdk1.8 
 
 ## 大致思路：
@@ -16,20 +16,20 @@
 
 
 > 遇到的坑：
-Java中byte[]比较----字节数组比较
-方法一：
-使用==比较的是两个字节数组是否为同一个字节数组，此处不是比较两个字节数组的内容是否相同。
-方法二：
-使用equals方法比较，该方法也是比较是两个字节数组是否为同一个字节数组，即equals也不是比较内容的。
-方法三：
-如果是比较字节数组内容是否相等，使用Arrays.equals(a,b)方法比较，返回值为true或false。
-参考：https://blog.csdn.net/wangshuang1631/article/details/52791635
+>1.Java中byte[]比较----字节数组比较
+>方法一：
+>使用==比较的是两个字节数组是否为同一个字节数组，此处不是比较两个字节数组的内容是否相同。
+>方法二：
+>使用equals方法比较，该方法也是比较是两个字节数组是否为同一个字节数组，即equals也不是比较内容的。
+>方法三：
+>如果是比较字节数组内容是否相等，使用Arrays.equals(a,b)方法比较，返回值为true或false。
+>参考：https://blog.csdn.net/wangshuang1631/article/details/52791635
 >
->Java中
-对于普通byte与String的转化，用iso-8859-1可逆
-new String(bs, "iso-8859-1")
-str.getBytes("iso-8859-1")
+>2.Java中
+>对于普通byte与String的转化，用iso-8859-1可逆
+>new String(bs, "iso-8859-1")
+>str.getBytes("iso-8859-1")
 >
->Java中
+>3.Java中
 >String+bytes+String字符串连接，直接的byte[]不是bytes的内容，需要自行转换到String再连接
 
