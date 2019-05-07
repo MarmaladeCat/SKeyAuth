@@ -32,3 +32,4 @@ str.getBytes("iso-8859-1")
 >
 Java中
 String+bytes+String字符串连接，直接的byte[]不是bytes的内容，需要自行转换到String再连接
+
