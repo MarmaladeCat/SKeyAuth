@@ -1,0 +1,8 @@
+> Java中byte[]比较----字节数组比较
+方法一：
+使用==比较的是两个字节数组是否为同一个字节数组，此处不是比较两个字节数组的内容是否相同。
+方法二：
+使用equals方法比较，该方法也是比较是两个字节数组是否为同一个字节数组，即equals也不是比较内容的。
+方法三：
+如果是比较字节数组内容是否相等，使用Arrays.equals(a,b)方法比较，返回值为true或false。
+https://blog.csdn.net/wangshuang1631/article/details/52791635
