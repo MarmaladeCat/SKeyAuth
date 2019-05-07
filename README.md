@@ -25,11 +25,11 @@ Java中byte[]比较----字节数组比较
 如果是比较字节数组内容是否相等，使用Arrays.equals(a,b)方法比较，返回值为true或false。
 参考：https://blog.csdn.net/wangshuang1631/article/details/52791635
 >
-Java中
+>Java中
 对于普通byte与String的转化，用iso-8859-1可逆
 new String(bs, "iso-8859-1")
 str.getBytes("iso-8859-1")
 >
-Java中
-String+bytes+String字符串连接，直接的byte[]不是bytes的内容，需要自行转换到String再连接
+>Java中
+>String+bytes+String字符串连接，直接的byte[]不是bytes的内容，需要自行转换到String再连接
 
