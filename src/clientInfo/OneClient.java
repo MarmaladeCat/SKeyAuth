@@ -1,7 +1,6 @@
 package clientInfo;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 public class OneClient
@@ -81,9 +80,9 @@ public class OneClient
 	}
 	
 	
-	public String getInfo()
+	public String getInfo() throws Exception
 	{
-		return "UserName\n" + UserName + "\nCurrentPass\n" + new String(S) + "\n";
+		return "UserName\n" + UserName + "\nCurrentPass\n" + new String(S, "iso-8859-1") + "\n";
 		
 	}
 

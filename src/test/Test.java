@@ -1,15 +1,10 @@
 package test;
 
-import java.security.MessageDigest;
-import java.util.Random;
-
-import clientInfo.ClientInfo;
 import clientInfo.OneClient;
 
 public class Test
 {
-	
-	
+
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
@@ -32,25 +27,23 @@ public class Test
 //			// TODO: handle exception
 //			e.printStackTrace();
 //		}
-		
+
 		try
 		{
-			OneClient client = new OneClient("username" , "123456");
+			OneClient client = new OneClient("username", "123456");
 			client.PassInitial();
-			
+
 			byte[] bs = client.getPassN(5);
-			OneClient.BytesPrint("bs:",bs);
-			String str = new String(bs,"iso-8859-1");
+			OneClient.BytesPrint("bs:", bs);
+			String str = new String(bs, "iso-8859-1");
 			System.out.println(str);
-			OneClient.BytesPrint("bS:",str.getBytes("iso-8859-1"));
-		
+			OneClient.BytesPrint("bS:", str.getBytes("iso-8859-1"));
+
 		} catch (Exception e)
 		{
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-
-
 
 	}
 
