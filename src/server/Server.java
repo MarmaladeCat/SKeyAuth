@@ -13,12 +13,12 @@ import clientInfo.OneClient;
 
 public class Server
 {
-	ServerSocket listenSocket = null;
-	Socket clientSocket = null;
-	BufferedReader in = null;
-	BufferedWriter out = null;
-	OneClient client = null;
-	void ServerInitial()
+	static ServerSocket listenSocket = null;
+	static Socket clientSocket = null;
+	static BufferedReader in = null;
+	static BufferedWriter out = null;
+	static OneClient client = null;
+	static void ServerInitial()
 	{
 		try
 		{
@@ -47,13 +47,15 @@ public class Server
 				String recvstr3 = in.readLine();
 				String recvstr4 = in.readLine();
 
-				if(recvstr1.equals("Username") && recvstr3.equals("CurrentPass"))
+				if(recvstr1.equals("UserName") && recvstr3.equals("CurrentPass"))
 				{
 					System.out.printf("接收到来自客户端初始化请求:%s",recvstr1+":"+recvstr2+","+recvstr3+":"+recvstr4);
-					this.client = new OneClient(recvstr2, recvstr4);
-					out.write("ack"+ this.client.toString());
+					client = new OneClient(recvstr2, recvstr4);
+					out.write("ack"+ client.toString());
+					out.newLine();
+					out.flush();
 				}
-				System.out.println("发送成功");
+				System.out.println("\n回信发送成功");
 				if (in != null)
 					in.close();
 				if (out != null)
@@ -85,10 +87,12 @@ public class Server
 		}
 	}
 
+	
+	
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
-
+		ServerInitial();
 	}
 
 }
