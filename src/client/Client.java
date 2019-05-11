@@ -157,7 +157,7 @@ public class Client
 		{
 			for (int i = 1; i < 21; i++)
 			{
-				OneClient.BytesPrint("i:", client.getPassN(i));
+				OneClient.BytesPrint(i+":", client.getPassN(i));
 			}
 		} catch (Exception e)
 		{
