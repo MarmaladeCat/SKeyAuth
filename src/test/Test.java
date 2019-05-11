@@ -1,10 +1,12 @@
 package test;
 
+import org.apache.log4j.Logger;
+
 import clientInfo.OneClient;
 
 public class Test
 {
-
+	private static Logger logger = Logger.getLogger(Test.class);
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
@@ -28,22 +30,24 @@ public class Test
 //			e.printStackTrace();
 //		}
 
-		try
-		{
-			OneClient client = new OneClient("username", "123456");
-			client.PassInitial();
+//		try
+//		{
+//			OneClient client = new OneClient("username", "123456");
+//			client.PassInitial();
+//
+//			byte[] bs = client.getPassN(5);
+//			OneClient.BytesPrint("bs:", bs);
+//			String str = new String(bs, "iso-8859-1");
+//			System.out.println(str);
+//			OneClient.BytesPrint("bS:", str.getBytes("iso-8859-1"));
+//
+//		} catch (Exception e)
+//		{
+//			// TODO: handle exception
+//			e.printStackTrace();
+//		}
+        logger.info("This is info message.");  
 
-			byte[] bs = client.getPassN(5);
-			OneClient.BytesPrint("bs:", bs);
-			String str = new String(bs, "iso-8859-1");
-			System.out.println(str);
-			OneClient.BytesPrint("bS:", str.getBytes("iso-8859-1"));
-
-		} catch (Exception e)
-		{
-			// TODO: handle exception
-			e.printStackTrace();
-		}
 
 	}
 

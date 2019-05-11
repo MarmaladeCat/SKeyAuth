@@ -4,12 +4,16 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.util.Arrays;
 
+import org.apache.log4j.Logger;
+
+import test.Test;
+
 public class ClientInfo
 {
 
 	private String UserName;
 	private byte[] CurrentPass;
-
+	private static Logger logger = Logger.getLogger(ClientInfo.class);
 	public ClientInfo(String username, byte[] currentPass)
 	{
 		this.UserName = username;
@@ -45,7 +49,16 @@ public class ClientInfo
 			re = true;
 			this.CurrentPass = pass.clone();
 		}
+		if(re)
+		{
+			logger.info(this.UserName+" try login:"+"成功");
+		}
+		else {
+			logger.info(this.UserName+" try login:"+"失败");
+		}
+		
 		return re;
 	}
 
+	
 }
