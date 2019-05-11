@@ -13,9 +13,37 @@
 下一次客户端需要带着新的密钥验证。
 
 
+#####初始化
+用户产生一个秘密的口令字：SecretPASS
+用户自己随机生成一个种子：SEED 
+预处理：MD5(SecretPASS |SEED) ，生成初始化S。 
+#####生成口令序列
+对S 做N 次S/KEY 安全散列，得到第1 个口令；
+对S 做N-1 次S/KEY 安全散列，得到第2 个口令；
+……
+对S 做1 次S/KEY 安全散列，得第N 个口令
+#####口令使用
+第1 个口令发送给服务器端保存
+客户端顺序使用第2-N 个口令
+#####口令的验证
+服务器端将收到的一次性口令传给验证函数
+进行一次MD5运算。若与上一次保存的口令匹配，则认证通过并将收到的口令保存下次验证使用。	
+
+#####Client/Client.java：
+ClientInitial：客户端初始化，根据用户名，密码产生客户数据结构，并初始化第一个动态口令发送给服务器端。
+ClientAuth:客户端认证方法，与服务器端连接并以此试验第2-20个动态口令
+#####Server/Server.java：
+ServerInitial：服务器端初始化，接收客户端连接并初始化客户数据结构，记录第一个动态口令。
+ServerAuth：认证服务器，接收客户端连接，接收客户端认证请求并返回认证结果，记录客户认证操作。
+#####ClientInfo/ClientInfo.java
+ClientInfo：ClientInfo数据结构，服务器端使用的客户数据结构，包含ClientInfo初始化方法，Authentication身份认证方法。
+在Authentication中加入登录日志记录，采Apache的log4j模块。
+#####ClientInfo/OneClient.java
+OneClient：OneClient数据结构，为客户端的客户数据结构，包含PassInitial初始化用户口令，GetPassN获取第N个动态口令等方法	
 
 
 > 遇到的坑：
+>
 >1.Java中byte[]比较----字节数组比较
 >方法一：
 >使用==比较的是两个字节数组是否为同一个字节数组，此处不是比较两个字节数组的内容是否相同。
